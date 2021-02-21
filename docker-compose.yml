@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
     front_tier:
-        build: ./front_tier/.
+        image: dklvcmmtech/sst-fronttier
         volumes: 
             - ./front_tier/.:/usr/src/app
         ports:
@@ -10,7 +10,7 @@ services:
         networks:
             - backend
     main:
-        build: ./main_tier/.
+        image: dklvcmmtech/sst-maintier
         volumes: 
             - ./main_tier/.:/usr/src/app
         ports:
@@ -19,7 +19,7 @@ services:
             - backend
 
     read_event:
-        build: ./read_tier/.
+        image: dklvcmmtech/sst-readtier
         links:
             - mysql_db
         volumes: 
@@ -31,7 +31,7 @@ services:
             - backend
 
     write_event:
-        build: ./write_tier/.
+        image: dklvcmmtech/sst-writetier
         links:
             - mysql_db
         volumes: 
